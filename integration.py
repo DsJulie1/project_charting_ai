@@ -6,10 +6,13 @@ st.set_page_config(layout="wide", page_title="한의원 상담 chart", page_icon
 
 st.title('	:alembic: 한의원 상담 chart')
 
+st.write("상담 텍스트 파일을 넣어주세요.")
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file:
     result = run_chartting(uploaded_file)
-    st.info(result)
+    result_with_double_newline = result.replace('\n', '\n\n')
+    st.info(result_with_double_newline)
+    
 
 
 
