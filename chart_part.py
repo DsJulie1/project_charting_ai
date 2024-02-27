@@ -7,6 +7,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import json
+import os
 
 
 def run_chartting(filename):
@@ -148,14 +149,22 @@ def run_chartting(filename):
     save_json(company, summary)
     return summary
 
+
 # 차팅 결과 json 파일로 저장({"company":company, "result":result})
 def save_json(company, result):
+    check_and_create_directory('./result')
+    check_and_create_directory(f'./result/{company}')
     content = {"company":company, "result":result}
-    file_path = f"{company}_result.json"
-    with open(file_path, 'a') as f:
+    file_path = f"./result/{company}/{company}_result.json"
+    with open(file_path, 'w') as f:
         json.dump(content, f, indent=4)
-        json.dump(', ', f, indent=4)
-    
+
+
+# 폴더가 있는지 확인 후 생성
+def check_and_create_directory(directory_name):
+    if not os.path.exists(directory_name):
+        os.mkdir(directory_name)
+
 
 # 차팅결과 return
 def chart(text_chunks, model_name, prompt):
