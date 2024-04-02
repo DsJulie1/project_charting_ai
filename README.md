@@ -5,3 +5,5 @@
 4. Run the server by entering uvicorn backend:app --reload in the terminal.
 5. Open another terminal window and enter streamlit run main.py, then execute it.
 6. Insert the audio file for medical consultation and click the "차팅 시작" button.
+
+![image](https://github.com/DsJulie1/project_charting_ai/assets/84252864/87873ba7-8dea-4104-a582-759977ddaa1c)
